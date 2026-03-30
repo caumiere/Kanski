@@ -1,38 +1,54 @@
 import Link from "next/link";
+import { AkioHeroSection } from "@/components/akio-hero";
+import { StackedScrollCards, type StackedScrollCardItem } from "@/components/stacked-scroll-cards";
 import type { FaqEntry, PortfolioEntry } from "@/components/site-data";
 import { faqEntries, featuredEntries, galleryEntries, portfolioEntries } from "@/components/site-data";
 
-function RollingLink({ href, label }: { href: string; label: string }) {
+function DocumentLinks() {
   return (
-    <Link className="rolling-link" href={href}>
-      <span>{label}</span>
-      <span aria-hidden="true">{label}</span>
-    </Link>
+    <div className="document-links">
+      <a className="document-link" href="/documents/kandon-fears-resume.pdf" target="_blank" rel="noreferrer">
+        Resume PDF
+      </a>
+      <a
+        className="document-link"
+        href="/documents/kandon-fears-cover-letter.docx"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Cover Letter DOCX
+      </a>
+    </div>
   );
 }
 
 function SiteRail() {
   return (
-    <aside className="site-rail">
-      <Link className="brand-mark" href="/">
-        Kandon®
+    <nav className="site-dock" aria-label="Primary">
+      <Link className="dock-avatar" href="/">
+        <span>KF</span>
       </Link>
 
-      <div className="rail-group">
-        <p className="rail-label">Quick Links</p>
-        <nav className="rail-nav">
-          <RollingLink href="/" label="Home" />
-          <RollingLink href="/gallery" label="Gallery" />
-          <RollingLink href="/work" label="Work" />
-          <RollingLink href="/contact" label="Contact" />
-        </nav>
+      <div className="dock-links">
+        <Link className="dock-link" href="/">
+          Home
+        </Link>
+        <Link className="dock-link" href="/work">
+          Projects
+        </Link>
+        <Link className="dock-link" href="/archive">
+          Journal
+        </Link>
+        <Link className="dock-link" href="/gallery">
+          Gallery
+        </Link>
       </div>
 
-      <div className="rail-meta">
-        <p>Based in Tallahassee, Florida</p>
-        <p>Broadcast Journalism Scholar + Multimedia Host</p>
-      </div>
-    </aside>
+      <Link className="dock-cta" href="/contact">
+        <span>Contact</span>
+        <span aria-hidden="true">+</span>
+      </Link>
+    </nav>
   );
 }
 
@@ -52,6 +68,18 @@ function SectionTag({
       <span>{right}</span>
     </div>
   );
+}
+
+function toStackedCard(entry: PortfolioEntry): StackedScrollCardItem {
+  return {
+    id: String(Number.parseInt(entry.order, 10)),
+    category: entry.category,
+    title: entry.title,
+    image: entry.thumbnailUrl,
+    href: `/work/${entry.slug}`,
+    alt: `${entry.title} preview`,
+    blurb: entry.blurb,
+  };
 }
 
 function MediaSurface({ entry }: { entry: PortfolioEntry }) {
@@ -185,30 +213,11 @@ function PageShell({
 export function PalmerHomePage() {
   return (
     <PageShell>
-      <section className="hero-block">
-        <SectionTag left="© Kandon Fears アーカイブ" center="(WDX® — 00)" right="Broadcast Portfolio" />
-        <div className="hero-block__inner">
-          <div className="hero-title">
-            <h1>Kandon Fears</h1>
-            <h1>Portfolio</h1>
-          </div>
-          <div className="hero-copy">
-            <p>
-              Broadcast journalism scholar at Florida A&amp;M University with published work from
-              The FAMUAN and on-camera samples from Word Around Campus and Venom Affairs.
-            </p>
-            <RollingLink href="/work" label="View Work" />
-          </div>
-        </div>
-      </section>
+      <AkioHeroSection />
 
       <section className="feature-block">
         <SectionTag left="© Selected Works こんにちは" center="(WDX® — 02)" right="Featured Archive" />
-        <div className="card-grid">
-          {featuredEntries.map((entry) => (
-            <WorkCard entry={entry} key={entry.slug} />
-          ))}
-        </div>
+        <StackedScrollCards cards={featuredEntries.slice(0, 4).map(toStackedCard)} />
       </section>
 
       <FaqSection />
@@ -278,6 +287,7 @@ export function PalmerContactPage() {
               For internship opportunities, reporting collaborations, or portfolio inquiries, use
               the contact links below.
             </p>
+            <DocumentLinks />
             <div className="contact-links">
               <a href="mailto:kandon@example.com">kandon@example.com</a>
               <a href="https://www.thefamuanonline.com/page/1/?s=Kandon+Fears" target="_blank" rel="noreferrer">
