@@ -191,7 +191,7 @@ details summary::-webkit-details-marker {
 .hero-block__inner,
 .detail-block,
 .faq-heading,
-.closing-copy {
+.closing-footer {
   border-top: 1px solid var(--line);
   padding-top: 28px;
 }
@@ -266,7 +266,6 @@ details summary::-webkit-details-marker {
 
 .hero-copy p,
 .faq-heading p,
-.closing-copy p,
 .detail-summary-block > p,
 .detail-article-surface p,
 .faq-item p {
@@ -481,40 +480,18 @@ details summary::-webkit-details-marker {
   padding: 14px 0 0 72px;
 }
 
-.closing-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+.closing-block--minimal {
+  gap: 0;
 }
 
-.closing-tile:nth-child(1) {
-  grid-column: span 2;
-}
-
-.closing-tile:nth-child(2),
-.closing-tile:nth-child(3),
-.closing-tile:nth-child(4),
-.closing-tile:nth-child(5),
-.closing-tile:nth-child(6),
-.closing-tile:nth-child(7) {
-  grid-column: span 1;
-}
-
-.closing-tile .media-surface {
-  min-height: 180px;
-}
-
-.closing-copy {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 520px);
-  gap: 32px;
-  align-items: start;
-}
-
-.closing-copy__kicker {
+.closing-footer {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.closing-footer span {
   color: var(--muted);
 }
 
@@ -644,8 +621,7 @@ details summary::-webkit-details-marker {
   .hero-block__inner,
   .title-block,
   .detail-block,
-  .faq-heading,
-  .closing-copy {
+  .faq-heading {
     grid-template-columns: 1fr;
   }
 
@@ -654,19 +630,8 @@ details summary::-webkit-details-marker {
     text-align: left;
   }
 
-  .card-grid,
-  .closing-grid {
+  .card-grid {
     grid-template-columns: 1fr;
-  }
-
-  .closing-tile:nth-child(1),
-  .closing-tile:nth-child(2),
-  .closing-tile:nth-child(3),
-  .closing-tile:nth-child(4),
-  .closing-tile:nth-child(5),
-  .closing-tile:nth-child(6),
-  .closing-tile:nth-child(7) {
-    grid-column: span 1;
   }
 
   .work-row {
@@ -678,6 +643,11 @@ details summary::-webkit-details-marker {
   .page-column {
     gap: 56px;
     padding: 18px 14px 188px;
+  }
+
+  .closing-footer {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .site-dock {

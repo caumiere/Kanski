@@ -149,7 +149,7 @@ function FaqSection({ entries = faqEntries }: { entries?: FaqEntry[] }) {
         <div className="faq-heading__media" />
         <div>
           <h2>FAQ.</h2>
-          <p>Clarifying the reporting, hosting, and portfolio structure with direct answers.</p>
+          <p>Answers about my reporting, hosting, and how this portfolio is organized.</p>
         </div>
       </div>
       <div className="faq-list">
@@ -169,26 +169,9 @@ function FaqSection({ entries = faqEntries }: { entries?: FaqEntry[] }) {
 
 function ClosingSection() {
   return (
-    <section className="closing-block">
-      <SectionTag left="© Final Section クロージング" center="(WDX® — 12)" right="Studio Wrap" />
-      <div className="closing-grid">
-        {galleryEntries.slice(0, 7).map((entry) => (
-          <div className="closing-tile" key={entry.slug}>
-            <MediaSurface entry={entry} />
-          </div>
-        ))}
-      </div>
-      <div className="closing-copy">
-        <div className="closing-copy__kicker">
-          <span>Independent</span>
-          <span>Overview</span>
-          <span>Multidisciplinary</span>
-          <span>Focused</span>
-        </div>
-        <p>
-          Kandon Fears is a Florida A&amp;M University broadcast journalism scholar with a portfolio
-          spanning on-camera work, segment production, and published reporting.
-        </p>
+    <section className="closing-block closing-block--minimal">
+      <div className="closing-footer">
+        <span>Ready to connect?</span>
         <a className="closing-cta" href="mailto:kandon@example.com">
           Email Me
         </a>
@@ -284,8 +267,8 @@ export function PalmerContactPage() {
           </div>
           <div className="hero-copy">
             <p>
-              For internship opportunities, reporting collaborations, or portfolio inquiries, use
-              the contact links below.
+              If you want to talk about internship opportunities, reporting collaborations, or my
+              portfolio, use the links below.
             </p>
             <DocumentLinks />
             <div className="contact-links">

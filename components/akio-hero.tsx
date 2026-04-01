@@ -33,7 +33,7 @@ const heroContent = {
   contact: "RESUME / COVER LETTER",
   descriptor: ["BROADCAST JOURNALISM SCHOLAR", "BASED TALLAHASSEE, FLORIDA"],
   title: "KANDON FEARS",
-  subtitle: "Hi, I'm Kandon, a broadcast journalism scholar focused on hosting, field reporting, and campus storytelling.",
+  subtitle: "Hi, I'm Kandon, and I focus on hosting, field reporting, and campus storytelling.",
   description:
     "I build clear, human-centered reporting through on-camera presentation, multimedia packages, and published journalism across video, web, and live coverage.",
 };
