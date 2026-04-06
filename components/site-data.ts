@@ -21,6 +21,8 @@ export type FaqEntry = {
   answer: string;
 };
 
+export const contactEmail = "kandonfears16@gmail.com";
+
 export const portfolioEntries: PortfolioEntry[] = [
   {
     slug: "word-around-campus-segment-one",

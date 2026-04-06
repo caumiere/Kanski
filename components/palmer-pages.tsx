@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AkioHeroSection } from "@/components/akio-hero";
 import { StackedScrollCards, type StackedScrollCardItem } from "@/components/stacked-scroll-cards";
 import type { FaqEntry, PortfolioEntry } from "@/components/site-data";
-import { faqEntries, featuredEntries, galleryEntries, portfolioEntries } from "@/components/site-data";
+import { contactEmail, faqEntries, featuredEntries, galleryEntries, portfolioEntries } from "@/components/site-data";
 
 function DocumentLinks() {
   return (
@@ -144,7 +144,7 @@ function WorkList({ entries }: { entries: PortfolioEntry[] }) {
 function FaqSection({ entries = faqEntries }: { entries?: FaqEntry[] }) {
   return (
     <section className="faq-block">
-      <SectionTag left="© Help Center ヘルプ" center="(WDX® — 01)" right="Clarifications" />
+      <SectionTag left="© Help Center" center="(KJF® — 01)" right="Clarifications" />
       <div className="faq-heading">
         <div className="faq-heading__media" />
         <div>
@@ -172,7 +172,7 @@ function ClosingSection() {
     <section className="closing-block closing-block--minimal">
       <div className="closing-footer">
         <span>Ready to connect?</span>
-        <a className="closing-cta" href="mailto:kandon@example.com">
+        <a className="closing-cta" href={`mailto:${contactEmail}`}>
           Email Me
         </a>
       </div>
@@ -199,7 +199,7 @@ export function PalmerHomePage() {
       <AkioHeroSection />
 
       <section className="feature-block">
-        <SectionTag left="© Selected Works こんにちは" center="(WDX® — 02)" right="Featured Archive" />
+        <SectionTag left="© Selected Works" center="(KJF® — 02)" right="Featured Archive" />
         <StackedScrollCards cards={featuredEntries.slice(0, 4).map(toStackedCard)} />
       </section>
 
@@ -259,7 +259,7 @@ export function PalmerContactPage() {
   return (
     <PageShell>
       <section className="hero-block">
-        <SectionTag left="© Contact セクション" center="(WDX® — 09)" right="Reach Out" />
+        <SectionTag left="© Contact" center="(KJF® — 09)" right="Reach Out" />
         <div className="hero-block__inner">
           <div className="hero-title">
             <h1>Contact</h1>
@@ -272,7 +272,7 @@ export function PalmerContactPage() {
             </p>
             <DocumentLinks />
             <div className="contact-links">
-              <a href="mailto:kandon@example.com">kandon@example.com</a>
+              <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
               <a href="https://www.thefamuanonline.com/page/1/?s=Kandon+Fears" target="_blank" rel="noreferrer">
                 The FAMUAN Archive
               </a>
@@ -341,7 +341,7 @@ export function PalmerWorkDetailPage({ entry }: { entry: PortfolioEntry }) {
       </section>
 
       <section className="more-works-block">
-        <SectionTag left="© Selected Works こんにちは" center="(WDX® — 02)" right="More Works" />
+        <SectionTag left="© Selected Works" center="(KJF® — 02)" right="More Works" />
         <div className="card-grid">
           {portfolioEntries
             .filter((item) => item.slug !== entry.slug)

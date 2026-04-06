@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { contactEmail } from "@/components/site-data";
 
 type HeroItemPosition = {
   x: number;
@@ -255,9 +257,33 @@ export function AkioHeroSection() {
           style={shouldReduceMotion ? undefined : { y: headingY }}
           className="relative z-10 mt-28 md:mt-40"
         >
+          <div className="relative z-20 mb-10 ml-auto w-[min(82vw,22rem)] overflow-hidden rounded-[2rem] border border-[#ee7624]/35 bg-[rgba(10,19,14,0.32)] shadow-[0_24px_80px_rgba(8,14,11,0.36)] md:absolute md:right-4 md:top-2 md:mb-0 md:w-[clamp(18rem,28vw,25rem)] xl:right-10">
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,33,24,0.08),rgba(15,33,24,0.76))]" />
+            <Image
+              src="/images/kandon-headshot-2025.jpeg"
+              alt="Kandon Fears in a black suit with an orange tie."
+              width={1922}
+              height={2325}
+              priority
+              sizes="(max-width: 767px) 82vw, (max-width: 1280px) 28vw, 25rem"
+              className="h-auto w-full object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 text-[#f5efe6]">
+              <span className="text-[0.76rem] uppercase tracking-[0.28em] text-[#f3d6bf]">
+                On-Camera Journalist
+              </span>
+              <a
+                href={`mailto:${contactEmail}`}
+                className="w-fit rounded-full border border-[#f5efe6]/30 bg-[rgba(12,24,17,0.58)] px-4 py-2 text-[0.82rem] font-medium tracking-[0.03em] transition hover:border-[#ee7624]/70 hover:bg-[#ee7624] hover:text-[#231f20]"
+              >
+                {contactEmail}
+              </a>
+            </div>
+          </div>
+
           <h1
             id="hero-title"
-            className="max-w-[1280px] font-semibold uppercase tracking-[-0.09em] text-[#f5efe6] leading-[0.82]"
+            className="max-w-[1280px] font-semibold uppercase leading-[0.82] tracking-[-0.09em] text-[#f5efe6] md:max-w-[58rem] xl:max-w-[1280px]"
           >
             {titleLines.map((line) => (
               <span className="block text-[clamp(4.75rem,11vw,10rem)]" key={line}>
@@ -269,7 +295,7 @@ export function AkioHeroSection() {
 
         <motion.div
           style={shouldReduceMotion ? undefined : { y: copyY }}
-          className="relative z-10 mt-20 max-w-[36rem] space-y-5 md:ml-24 md:mt-24"
+          className="relative z-10 mt-20 max-w-[36rem] space-y-5 md:ml-24 md:mt-24 md:max-w-[30rem]"
         >
           <p className="text-[clamp(1.45rem,2.4vw,2.2rem)] leading-[1.08] tracking-[-0.05em] text-[#f5efe6]">
             {heroContent.subtitle}
